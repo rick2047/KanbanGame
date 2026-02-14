@@ -8,7 +8,7 @@ We're building a kanban workflow simulation game that demonstrates how quality a
 - Discrete tick-based simulation (500ms ticks)
 - Integer worker speeds only
 - Object-oriented JavaScript
-- Three separate files: index.html, styles.css, script.js
+- HTML/CSS plus JavaScript ES modules
 - GitHub Pages deployment
 - pSkill limited to 0.5-1.0 range
 
@@ -30,12 +30,12 @@ We're building a kanban workflow simulation game that demonstrates how quality a
 
 ## Decisions
 
-### File Structure: Three Separate Files
-**Decision:** Split into `index.html`, `styles.css`, `script.js` rather than single file.
+### File Structure: HTML/CSS + JavaScript ES Modules
+**Decision:** Use `index.html` and `styles.css` plus multiple JavaScript ES module files (e.g., `src/models/*.js`, `src/sim/*.js`, `src/ui/*.js`) loaded from a minimal entry module.
 
-**Rationale:** Better code organization, easier maintenance, standard web development practice. GitHub Pages serves static files perfectly well.
+**Rationale:** Improves modularity, makes parallel development safer for multiple subagents, and reduces merge conflicts versus a single large `script.js`.
 
-**Alternatives considered:** Single HTML file with embedded CSS/JS (rejected for maintainability).
+**Alternatives considered:** Single HTML file with embedded CSS/JS and one monolithic `script.js` (both rejected for maintainability and collaboration constraints).
 
 ### Game Loop: Discrete Ticks
 **Decision:** Use 500ms discrete ticks with `setInterval`.
@@ -146,15 +146,14 @@ This quality resolution is invoked from `Worker.work()` when the role reaches co
                   │
                   ▼
 ┌─────────────────────────────────────────┐
-│           script.js                     │
-│  ┌──────────┐ ┌──────────┐ ┌─────────┐ │
-│  │   Game   │ │GameState │ │  Game   │ │
-│  │   Loop   │ │          │ │ Render  │ │
-│  └──────────┘ └──────────┘ └─────────┘ │
-│  ┌──────────┐ ┌──────────┐ ┌─────────┐ │
-│  │  Worker  │ │  Ticket  │ │ Project │ │
-│  │          │ │          │ │         │ │
-│  └──────────┘ └──────────┘ └─────────┘ │
+│      src/main.js + ES modules           │
+│  ┌─────────────┐ ┌───────────────────┐  │
+│  │ src/sim/*   │ │   src/ui/*        │  │
+│  │ game loop   │ │ render + dnd      │  │
+│  └─────────────┘ └───────────────────┘  │
+│  ┌────────────────────────────────────┐ │
+│  │ src/models/* (GameState/Ticket/...)│ │
+│  └────────────────────────────────────┘ │
 └─────────────────────────────────────────┘
 ```
 

@@ -1,8 +1,8 @@
 ## 1. Foundation and File Scaffolding
 
-- [ ] 1.1 Create `index.html`, `styles.css`, and `script.js` with linked assets and an initial app mount structure
+- [ ] 1.1 Create `index.html` and `styles.css`, plus JavaScript module entrypoint (`src/main.js`) wired via `<script type="module">`
 - [ ] 1.2 Add top-level DOM regions for board columns, worker reserve, and HUD/stats placeholders in `index.html`
-- [ ] 1.3 Add section markers in `script.js` for domain models, simulation loop, rendering, and drag-drop wiring to reduce merge conflicts between subagents
+- [ ] 1.3 Scaffold module folders/files (`src/models`, `src/sim`, `src/ui`) and split responsibilities to reduce merge conflicts between subagents
 
 ## 2. Parallel Wave A - UI Shell (Subagent Lane A)
 

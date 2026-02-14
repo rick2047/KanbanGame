@@ -6,7 +6,7 @@ Build a real-time kanban workflow management simulation game where players assig
 
 ## What Changes
 
-- Create an HTML5 Canvas web game with separate files (`index.html`, `styles.css`, `script.js`)
+- Create a DOM/CSS web game with separate files (`index.html`, `styles.css`) and JavaScript ES modules
 - Implement a discrete-tick simulation engine (500ms ticks)
 - Build object-oriented JavaScript architecture with GameState, Ticket, Worker, and Project classes
 - Create kanban board UI with 5 columns: Backlog → Todo → In Progress → Testing → Done
@@ -34,5 +34,5 @@ Build a real-time kanban workflow management simulation game where players assig
 
 - New GitHub Pages site deployment
 - Pure client-side JavaScript (no backend)
-- Multi-file architecture (index.html, styles.css, script.js) for better organization
-- Canvas-based rendering with DOM overlay for interactions
+- Multi-file architecture (`index.html`, `styles.css`, and modular JavaScript files) for better organization
+- DOM-based rendering and interactions with CSS styling
